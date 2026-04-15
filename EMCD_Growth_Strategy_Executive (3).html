@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMCD Growth Strategy — Executive Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f35;
+  --blue: #1a56a8;
+  --blue-mid: #2d6fd4;
+  --coral: #d94f2e;
+  --coral-light: #f5e8e4;
+  --gold: #c9963a;
+  --gold-light: #faf3e8;
+  --green: #1a6b42;
+  --green-light: #e8f4ee;
+  --teal: #0d6b5e;
+  --teal-light: #e5f3f1;
+  --purple: #4a3ab5;
+  --purple-light: #eeecfc;
+  --ink: #0f1f35;
+  --ink-60: #4a5568;
+  --ink-30: #9aa5b4;
+  --bg: #f8f7f4;
+  --white: #ffffff;
+  --rule: #e2ddd6;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 56px;
+  gap: 8px;
+}
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.nav-brand span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.nav-link {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  border: none;
+  background: transparent;
+}
+.nav-link:hover { color: white; background: rgba(255,255,255,0.08); }
+.nav-link.active { color: white; background: rgba(255,255,255,0.12); }
+
+/* ── SECTIONS ── */
+.section { display: none; animation: fadeIn 0.3s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ── COVER ── */
+.cover {
+  min-height: calc(100vh - 56px);
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,150,58,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 200px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,111,212,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.cover-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(52px, 6vw, 80px);
+  line-height: 1.0;
+  color: white;
+  margin-bottom: 16px;
+  max-width: 700px;
+}
+.cover-title em { color: var(--gold); font-style: italic; }
+.cover-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  margin-bottom: 64px;
+  font-style: italic;
+  font-family: 'DM Serif Display', serif;
+}
+.cover-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  margin-bottom: 48px;
+}
+.btc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,150,58,0.12);
+  border: 1px solid rgba(201,150,58,0.3);
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 64px;
+}
+.btc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 800px;
+}
+.kpi-cell {
+  background: rgba(255,255,255,0.04);
+  padding: 24px 28px;
+  transition: background 0.2s;
+}
+.kpi-cell:hover { background: rgba(255,255,255,0.07); }
+.kpi-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  color: white;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.kpi-val.warn { color: var(--coral); }
+.kpi-val.gold { color: var(--gold); }
+.kpi-lbl { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.4; }
+
+/* ── CONTENT WRAPPER ── */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 40px 80px;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.page-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.page-desc {
+  font-size: 15px;
+  color: var(--ink-60);
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.callout.red { background: var(--coral-light); color: #7a2010; }
+.callout.red .callout-icon { background: var(--coral); color: white; }
+.callout.blue { background: #e8eef8; color: #0d2d5e; }
+.callout.blue .callout-icon { background: var(--blue); color: white; }
+.callout.gold { background: var(--gold-light); color: #6b4e0a; }
+.callout.gold .callout-icon { background: var(--gold); color: white; }
+.callout.green { background: var(--green-light); color: #0a3d22; }
+.callout.green .callout-icon { background: var(--green); color: white; }
+.callout.navy { background: #e8ecf3; color: var(--navy); }
+.callout.navy .callout-icon { background: var(--navy); color: white; }
+.callout.purple { background: var(--purple-light); color: #1e1560; }
+.callout.purple .callout-icon { background: var(--purple); color: white; }
+.callout.teal { background: var(--teal-light); color: #05362e; }
+.callout.teal .callout-icon { background: var(--teal); color: white; }
+
+/* ── SECTION HEADERS ── */
+.sh { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin: 40px 0 16px; }
+.sh2 { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin: 32px 0 12px; }
+
+/* ── TABLES ── */
+.tbl-wrap { overflow-x: auto; margin-bottom: 28px; border-radius: 10px; border: 1px solid var(--rule); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th {
+  background: var(--navy);
+  color: white;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+}
+tbody tr:nth-child(even) td { background: #f4f2ef; }
+tbody tr:nth-child(odd) td { background: white; }
+tbody td { padding: 11px 16px; color: var(--ink-60); vertical-align: top; line-height: 1.5; border-bottom: 1px solid var(--rule); }
+tbody tr:last-child td { border-bottom: none; }
+tbody td strong { color: var(--ink); font-weight: 500; }
+.td-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ── PRIORITY TABLE ── */
+.priority-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+/* ── FUNNEL STAGES ── */
+.funnel-stage {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid var(--rule);
+}
+.funnel-head {
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.funnel-step {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.funnel-title { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1.1; margin-bottom: 4px; }
+.funnel-desc { font-size: 13px; opacity: 0.8; }
+.funnel-body {
+  background: white;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  font-size: 13px;
+}
+.funnel-item-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 4px; }
+.funnel-item-val { color: var(--ink-60); line-height: 1.5; }
+
+/* ── CAMPAIGN FUNNEL ── */
+.campaign-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 32px;
+}
+.cf-stage {
+  padding: 0;
+  position: relative;
+}
+.cf-head {
+  padding: 22px 28px 20px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity 0.2s;
+}
+.cf-head:hover { opacity: 0.92; }
+.cf-step-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
+.cf-title { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 4px; }
+.cf-subtitle { font-size: 13px; opacity: 0.75; font-style: italic; }
+.cf-chevron { font-size: 18px; opacity: 0.6; transition: transform 0.2s; flex-shrink: 0; }
+.cf-stage.open .cf-chevron { transform: rotate(90deg); }
+.cf-body {
+  display: none;
+  background: white;
+  padding: 24px 28px;
+  border-left: 4px solid;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+.cf-stage.open .cf-body { display: block; }
+.cf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cf-field-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 6px; }
+.cf-field-val { color: var(--ink-60); line-height: 1.6; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #eee;
+  color: var(--ink);
+}
+
+/* ── BU CARDS ── */
+.bu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.bu-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bu-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.bu-card-head { padding: 20px 22px 16px; color: white; }
+.bu-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 6px; }
+.bu-card-title { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 6px; }
+.bu-card-sub { font-size: 12px; opacity: 0.75; line-height: 1.4; }
+.bu-card-body { background: white; padding: 16px 22px; }
+.bu-card-desc { font-size: 13px; color: var(--ink-60); line-height: 1.5; margin-bottom: 10px; }
+.bu-card-bench { font-size: 11px; color: var(--ink-30); font-style: italic; }
+
+/* ── BRAND ARCH ── */
+.brand-arch {
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.brand-umbrella {
+  background: var(--navy);
+  padding: 20px 28px;
+  text-align: center;
+  color: white;
+}
+.brand-umbrella-title { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 4px; }
+.brand-umbrella-sub { font-size: 12px; opacity: 0.55; }
+.brand-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+}
+.brand-product {
+  background: white;
+  padding: 20px 20px;
+}
+.brand-product-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.brand-product-tone { font-size: 11px; color: var(--ink-30); margin-bottom: 8px; font-style: italic; }
+.brand-product-msg { font-size: 12px; color: var(--ink-60); line-height: 1.5; }
+.brand-arrow { text-align: center; padding: 12px; background: #f4f2ef; }
+.brand-arrow-inner { display: flex; justify-content: center; gap: 40px; }
+.brand-cross { font-size: 12px; color: var(--blue); font-weight: 500; display: flex; align-items: center; gap: 6px; }
+
+/* ── OKR BARS ── */
+.okr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+.okr-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.okr-obj { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 6px; }
+.okr-kr { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+.okr-bar-wrap { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; margin-bottom: 6px; }
+.okr-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+.okr-vals { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-30); }
+
+/* ── BENCHMARK CARDS ── */
+.bench-section { margin-bottom: 40px; }
+.bench-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.bench-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.bench-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 16px;
+  transition: box-shadow 0.2s;
+}
+.bench-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+.bench-name { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 2px; }
+.bench-scale { font-size: 11px; color: var(--ink-30); margin-bottom: 8px; }
+.bench-lesson { font-size: 12px; color: var(--ink-60); line-height: 1.5; }
+
+/* ── PRIORITY TABLE STYLING ── */
+.prio-now { background: #c00000; }
+.prio-q2 { background: #d94f2e; }
+.prio-q2q3 { background: #c9963a; }
+.prio-q3 { background: #1a56a8; }
+
+/* ── LIFECYCLE TRIGGER ── */
+.trigger-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.trigger-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px;
+}
+.trigger-state { font-weight: 500; color: var(--navy); min-width: 200px; flex-shrink: 0; }
+.trigger-sep { color: var(--ink-30); flex-shrink: 0; margin-top: 2px; }
+.trigger-msg { color: var(--ink-60); line-height: 1.5; }
+.trigger-channel { font-size: 11px; color: var(--blue); font-weight: 500; margin-top: 3px; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+/* ── FOOTER ── */
+.doc-footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 11px;
+  color: var(--ink-30);
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 700px) {
+  .kpi-strip { grid-template-columns: 1fr 1fr; }
+  .bu-grid, .funnel-body, .cf-grid, .okr-grid, .bench-grid, .brand-products { grid-template-columns: 1fr; }
+  .cover { padding: 48px 28px 40px; }
+  .content { padding: 40px 20px 60px; }
+  nav { padding: 0 20px; }
+  .cover-title { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">EMCD <span>Growth</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="show('cover')">Overview</button>
+    <button class="nav-link" onclick="show('situation')">Situation</button>
+    <button class="nav-link" onclick="show('architecture')">Architecture</button>
+    <button class="nav-link" onclick="show('brand')">Brand</button>
+    <button class="nav-link" onclick="show('funnel')">Growth funnel</button>
+    <button class="nav-link" onclick="show('paid')">Paid strategy</button>
+    <button class="nav-link" onclick="show('coinhold')">Coinhold</button>
+    <button class="nav-link" onclick="show('priorities')">Priorities</button>
+    <button class="nav-link" onclick="show('benchmarks')">Benchmarks</button>
+    <button class="nav-link" onclick="show('okrs')">OKRs</button>
+  </div>
+</nav>
+
+<!-- ══ COVER ══ -->
+<div id="cover" class="section active">
+<div class="cover">
+  <div class="cover-eyebrow">Executive Brief · April 2026 · Confidential</div>
+  <h1 class="cover-title">From acquisition machine<br>to <em>growth system</em></h1>
+  <p class="cover-sub">EMCD Growth Strategy v3.1</p>
+  <div class="btc-badge"><div class="btc-dot"></div> BTC at $75K — 37% below $120K ATH — market in correction</div>
+  <div class="kpi-strip">
+    <div class="kpi-cell">
+      <div class="kpi-val">39,583</div>
+      <div class="kpi-lbl">Q1 registrations — but only 22.3% activate</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-val warn">$15.8</div>
+      <div class="kpi-lbl">Paid CAC — lowest CR in the mix at 10.7%</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-val gold">31%</div>
+      <div class="kpi-lbl">Referral CR — best channel, most underinvested</div>
+    </div>
+    <div class="kpi-cell">
+      <div class="kpi-val warn">16%</div>
+      <div class="kpi-lbl">Untracked regs — attribution blindspot</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="callout navy">
+    <div class="callout-icon">!</div>
+    <div>This is not a marketing plan. It is a growth system redesign. A marketing plan spends budget. A growth system makes the product, the org, and the data compound. EMCD needs the second. Navigate the sections above to explore the full strategy.</div>
+  </div>
+
+  <div class="sh">What this document covers</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Section</th><th>What you'll find</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Situation</strong></td><td>Q1 data, what is broken, market context at $75K BTC</td><td>Establishes the baseline — where we are and why it must change</td></tr>
+        <tr><td><strong>Architecture</strong></td><td>Four BUs, Performa as standalone, cross-sell logic, GEO strategic gap</td><td>Gets the org structure and geographic focus right before any campaign runs</td></tr>
+        <tr><td><strong>Brand</strong></td><td>Umbrella brand above Mining, Coinhold, and INDESQ — one identity, KVI, what each BU owns</td><td>One identity compounds trust — without it every BU rebuilds credibility from zero</td></tr>
+        <tr><td><strong>Growth funnel</strong></td><td>Revenue = MAU × ARPU as north star. Full funnel: Acquisition → Activation → Engagement → Retention → Monetization. Lifecycle triggers.</td><td>The system view — individual campaigns do not fix structural leaks. Revenue is always the destination.</td></tr>
+        <tr><td><strong>Paid strategy + channels</strong></td><td>Shift from direct-response-only to Awareness → Consideration → Conversion. Full channel mix including video, Telegram, LLMs. Mobile-first. Month-1 parallel creative testing.</td><td>You cannot convert someone who does not know you exist. Channel investment must match where users actually are.</td></tr>
+        <tr><td><strong>Coinhold</strong></td><td>Full product suite, ecosystem positioning, ICPs, conversion events per product, two acquisition engines</td><td>The ecosystem is the differentiation — earn, spend, borrow, stake, invest from one app. No single competitor has the full stack.</td></tr>
+        <tr><td><strong>Priorities</strong></td><td>10 actions in order, color-coded by urgency. 5 Now, 5 Q2.</td><td>Clarity on what moves first — the first 5 are non-negotiable preconditions before any campaign spend.</td></tr>
+        <tr><td><strong>Benchmarks</strong></td><td>21 companies mapped by BU — Coinhold, Mining, INDESQ, Performa, and fintech master references</td><td>Operational references with one specific lesson per company. Not aspirational — actionable.</td></tr>
+        <tr><td><strong>OKRs</strong></td><td>Revenue = MAU × ARPU targets with Q1 baselines. TBD items flagged for alignment with Analytics and leadership.</td><td>How the strategy is evaluated — not by registrations, by revenue-generating active users and ARPU growth.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ SITUATION ══ -->
+<div id="situation" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 1</div>
+    <h2 class="page-title">The situation</h2>
+    <p class="page-desc">Q1 2026. EMCD is acquiring users but not activating them. This is not a budget problem — it is a system problem.</p>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-icon">!</div>
+    <div><strong>The fundamental error:</strong> we are optimizing for registrations. The user who registers and never deposits costs as much to acquire as the user who becomes a $100K Coinhold balance. Revenue is the north star — always. Right now we cannot manage it properly because MAU is unknown, ARPU is undefined, and ARPPU by BU has never been measured. We are not replacing revenue — we are building the infrastructure to understand it. <strong>Revenue = MAU × ARPU.</strong> Both components must be tracked to know which lever to pull.</div>
+  </div>
+
+  <div class="sh">What is not working</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Problem</th><th>Evidence</th><th>Consequence</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Paid channel is broken</strong></td><td>10.7% CR, $15.8 CAC — worst activation in the mix</td><td>Spending money to acquire users who never deposit</td></tr>
+        <tr><td><strong>Attribution blindspot</strong></td><td>6,449 regs with zero channel data — Appsflyer MMP must close this</td><td>Cannot optimize what cannot be measured</td></tr>
+        <tr><td><strong>Referral Program underscaled</strong></td><td>31% CR, $34.8K LTV — but only 2,113 regs</td><td>Best engine running at 20% capacity</td></tr>
+        <tr><td><strong>Welcome journey undefined</strong></td><td>No walkthroughs, unclear deposit flow, no aha moment, no happy moments</td><td>Users register, get lost, leave — payback time increases</td></tr>
+        <tr><td><strong>Static campaigns miss moments</strong></td><td>BTC at $75K — no Onlock campaign, no price alerts</td><td>Competitors capture the moment, EMCD does not</td></tr>
+        <tr><td><strong>Retention unmeasured</strong></td><td>MAU not tracked, churn unknown, no cohort analysis</td><td>Cannot know if growth is compounding or leaking</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh">Why $75K BTC is a tailwind, not a problem</div>
+  <div class="callout gold">
+    <div class="callout-icon">→</div>
+    <div><strong>Onlock is the most urgent missed opportunity right now.</strong> Nobody wants to sell BTC at a 37% loss. The campaign writes itself. The product is live. Every day without an Onlock campaign is a day a competitor captures that user.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>Why it wins at $75K</th><th>The message</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Onlock (loans)</strong></td><td>Nobody wants to sell BTC at a loss. Borrow against it.</td><td>"Don't sell. Borrow. Keep your BTC."</td></tr>
+        <tr><td><strong>Coinhold 14% APY</strong></td><td>Stablecoin yield is more attractive when price is down</td><td>"Your USDT is earning 0%. Make it 14%."</td></tr>
+        <tr><td><strong>Card</strong></td><td>Daily spending need doesn't care about BTC price</td><td>"Spend today. Your crypto earns while you sleep."</td></tr>
+        <tr><td><strong>Indexes</strong></td><td>Uncertainty drives managed allocation demand</td><td>"Let the portfolio work. Stop timing the market."</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ ARCHITECTURE ══ -->
+<div id="architecture" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 2</div>
+    <h2 class="page-title">The architecture</h2>
+    <p class="page-desc">EMCD is not one product. It is four distinct businesses sharing infrastructure and, where relevant, a brand umbrella.</p>
+  </div>
+
+  <div class="bu-grid">
+    <div class="bu-card">
+      <div class="bu-card-head" style="background:#0d4a80">
+        <div class="bu-card-label">Business unit 1</div>
+        <div class="bu-card-title">Mining</div>
+        <div class="bu-card-sub">Professional mining platform</div>
+      </div>
+      <div class="bu-card-body">
+        <p class="bu-card-desc">Hashrate, payouts, pool management. Own app launching May 2026. Cross-sell bridge to Coinhold built in — Engine 1 for Coinhold acquisition.</p>
+        <p class="bu-card-bench">Benchmarks: WhiteBIT/WhitePool · Luxor · Foundry</p>
+      </div>
+    </div>
+    <div class="bu-card">
+      <div class="bu-card-head" style="background:#0e5c3a">
+        <div class="bu-card-label">Business unit 2</div>
+        <div class="bu-card-title">Coinhold</div>
+        <div class="bu-card-sub">Consumer super-app</div>
+      </div>
+      <div class="bu-card-body">
+        <p class="bu-card-desc">Yield (14% APY), card, loans (Onlock), indexes, ramps, PreIPO, Xstocks, RWA coming. Core product — needs its own acquisition engine independent of Mining.</p>
+        <p class="bu-card-bench">Benchmarks: Lemon · Bitso · Bitpanda · Phantom · Ondo</p>
+      </div>
+    </div>
+    <div class="bu-card">
+      <div class="bu-card-head" style="background:#8b2810">
+        <div class="bu-card-label">Business unit 3</div>
+        <div class="bu-card-title">INDESQ</div>
+        <div class="bu-card-sub">Pro exchange</div>
+      </div>
+      <div class="bu-card-body">
+        <p class="bu-card-desc">Active traders, advanced tools. Binance Pro / Bitso Alpha direction. Does not need its own acquisition strategy yet — it needs a graduation strategy from Coinhold.</p>
+        <p class="bu-card-bench">Benchmarks: Bitvavo · Bitso Alpha · Hyperliquid · Bitpanda Pro</p>
+      </div>
+    </div>
+    <div class="bu-card">
+      <div class="bu-card-head" style="background:#5a4008">
+        <div class="bu-card-label">Standalone brand</div>
+        <div class="bu-card-title">Performa</div>
+        <div class="bu-card-sub">B2B financial infrastructure</div>
+      </div>
+      <div class="bu-card-body">
+        <p class="bu-card-desc">Cross-border payments, payroll, OTC, multi-currency accounts, corporate cards. Buyer is a CFO or finance team. Fully independent — own strategy, own document.</p>
+        <p class="bu-card-bench">Benchmarks: Bitso Business · Bridge · Deel · Airwallex · Mercuryo</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-icon">!</div>
+    <div><strong>Mining → Coinhold bridge:</strong> The May 2026 Mining app launch is Coinhold's most important acquisition event of the year. SSO = 40%+ conversion. Separate registration = 5%. This one technical decision determines whether Coinhold needs paid acquisition in Q2 or not. Measure the conversion rate in the first 30 days before spending anything.</div>
+  </div>
+  <div class="callout red">
+    <div class="callout-icon">!</div>
+    <div><strong>Non-negotiable:</strong> Coinhold cannot be dependent on Mining for growth. The cross-sell is Engine 1. Coinhold must build Engine 2 — its own ICPs, its own channels, its own activation proof. A Coinhold that cannot acquire users without miners has not found its own market yet.</div>
+  </div>
+
+  <div class="sh">Geographic focus — the missing strategic decision</div>
+  <div class="callout red">
+    <div class="callout-icon">!</div>
+    <div><strong>EMCD operates in 120+ countries and is localized in 25 languages. That is not a strategy — it is a distribution fact.</strong> Growing everywhere at the same time is growing nowhere fast. Every company in the benchmark set made an explicit GEO decision before scaling: Lemon dominated Argentina and Peru before expanding to the rest of LATAM. Revolut owned London before Europe. Bitvavo owns the Netherlands — 50% of all EUR crypto liquidity — before touching another country. Bitso sequenced Mexico → Argentina → Brazil → Colombia, in that order, with full market investment at each step. EMCD has not made this decision explicitly. Until it does, marketing budget, community effort, KOL selection, language investment, and referral mechanics are being spread across 120 markets with no market reaching critical mass.</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Competitor</th><th>GEO decision made</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lemon</strong></td><td>Argentina first — full market investment. Then Peru. Then LATAM expansion with Series B capital.</td><td>35% of Argentina's active crypto sessions. #1 in Peru. 5.5M users from two markets before touching a third.</td></tr>
+        <tr><td><strong>Bitso</strong></td><td>Mexico as the foundation (70% of user base). Argentina as the growth market. Brazil and Colombia sequenced after.</td><td>9M users. Argentina became 3.3x revenue YoY by going all-in rather than spreading thin.</td></tr>
+        <tr><td><strong>Bitvavo</strong></td><td>Netherlands only. Built to dominate EUR spot liquidity in one country.</td><td>50% of all EUR crypto exchange liquidity. 2M users. Largest EUR spot exchange globally — from one country.</td></tr>
+        <tr><td><strong>WhiteBIT</strong></td><td>CIS/Eastern Europe as core. Licensed in specific markets (Kazakhstan, Georgia, Turkey, Australia, Argentina) before going global.</td><td>8M users. Largest European exchange by traffic. Market-by-market licensing built trust that broad launches cannot.</td></tr>
+        <tr><td><strong>EMCD</strong></td><td>120+ countries. No explicit priority market defined in current strategy.</td><td>66,500 miners and product users across 120 countries — thin coverage everywhere, dominant nowhere outside CIS mining.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-icon">→</div>
+    <div><strong>Action required before Q2 campaigns launch: define the top 3 priority markets per BU.</strong> This is not one decision — it is three, because each BU has a different user, a different product-market fit signal, and a different reason a market is the right one to concentrate in.<br><br>
+<strong>Mining app:</strong> Grounded in pool geography — where are EMCD's 66,500 miners concentrated? Mining pool infrastructure, energy costs, and existing miner community density determine which markets to go deep in. The miner community in those markets becomes the organic acquisition engine for the Mining app launch in May.<br><br>
+<strong>Coinhold:</strong> Grounded in two signals — (1) where are the SEO Non-Brand users with $306K avg balance located? That is existing high-intent organic traction that paid channels should amplify, not replace. (2) Where is USDT demand driven by inflation or currency instability? The Lemon playbook: find the market where the pain makes the product obvious. Turkey, Ukraine, Argentina all qualify — but EMCD needs to pick one and go all-in before touching a second.<br><br>
+<strong>INDESQ:</strong> Grounded in trader density and regulatory clarity — where do active crypto traders operate who are underserved by current exchanges? MiCA-regulated European markets (Germany, Netherlands) offer regulatory clarity. CIS markets offer existing EMCD trust. The priority market for INDESQ is where Coinhold already has active traders who are ready to upgrade — it is a graduation market, not a cold acquisition market.<br><br>
+Without this decision made per BU, every campaign runs in 120 directions at once and no market reaches critical mass.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══ BRAND ══ -->
+<div id="brand" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 3</div>
+    <h2 class="page-title">The umbrella brand</h2>
+    <p class="page-desc">One identity above Mining, Coinhold, and INDESQ. The umbrella does one job: build trust and recognition so each product does not have to rebuild credibility from scratch.</p>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-icon">★</div>
+    <div><strong>The position:</strong> EMCD is your crypto ecosystem — mine it, earn on it, spend it, trade it. One visual identity. One tone of voice. One narrative. Each product has its own positioning and campaigns within that container.</div>
+  </div>
+
+  <div class="sh">Brand architecture</div>
+  <div class="brand-arch">
+    <div class="brand-umbrella">
+      <div class="brand-umbrella-title">EMCD — umbrella brand</div>
+      <div class="brand-umbrella-sub">Trust · recognition · visual identity · PR · SEO / LLM authority · ecosystem narrative</div>
+    </div>
+    <div class="brand-arrow">
+      <div class="brand-arrow-inner">
+        <span class="brand-cross">↓ Mining → Coinhold</span>
+        <span class="brand-cross">↓ Coinhold → INDESQ</span>
+      </div>
+    </div>
+    <div class="brand-products">
+      <div class="brand-product">
+        <div class="brand-product-name" style="color:#0d4a80">Mining app</div>
+        <div class="brand-product-tone">Professional · community-first · expert voice</div>
+        <div class="brand-product-msg">"Your hashrate. Your payouts. Your control." — Mining Telegram presence, miner community, hashprice content.</div>
+      </div>
+      <div class="brand-product">
+        <div class="brand-product-name" style="color:#0e5c3a">Coinhold</div>
+        <div class="brand-product-tone">Cycle-proof · direct · outcome-focused</div>
+        <div class="brand-product-msg">"Don't sell. Don't panic. Put it to work." — ICP campaigns for yield seekers and crypto spenders. Onlock as permanent product for long-term holders.</div>
+      </div>
+      <div class="brand-product">
+        <div class="brand-product-name" style="color:#8b2810">INDESQ</div>
+        <div class="brand-product-tone">Pro trader · full control · institutional grade</div>
+        <div class="brand-product-msg">"When you're ready to trade, not just hold." — Upgrade CTA inside Coinhold for active traders.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh2">What must be locked before any campaign launches</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>KVI element</th><th>Decision needed</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Color system</strong></td><td>One primary system unified enough to feel like EMCD, flexible enough for each BU to have its own expression</td></tr>
+        <tr><td><strong>Typography + tone</strong></td><td>Direct, confident, knowledgeable. Not hype. Not generic fintech. Real outcomes, real numbers, real user language.</td></tr>
+        <tr><td><strong>Human vs. product</strong></td><td>Test in the month-1 creative framework — but agree on the starting hypothesis first. WhiteBIT chose sports (Juventus). Nubank chose the purple card. EMCD's equivalent is TBD.</td></tr>
+        <tr><td><strong>Market narrative</strong></td><td>Umbrella message translates across markets. The incentive localizes. "Earn on your crypto" is universal. The APY, product, and channel are market-specific.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout gold">
+    <div class="callout-icon">!</div>
+    <div>A/B tests optimize within a brand container — they cannot create the container. Running creative tests without a KVI produces data about tactics, not about what makes EMCD distinctive. Lock KVI first.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══ GROWTH FUNNEL ══ -->
+<div id="funnel" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 4</div>
+    <h2 class="page-title">The full growth funnel</h2>
+    <p class="page-desc">Acquisition → Activation → Engagement → Retention → Monetization. Individual campaigns do not fix structural leaks. This is the system view.</p>
+  </div>
+
+  <div class="sh">The north star metric</div>
+  <div class="callout navy">
+    <div class="callout-icon">★</div>
+    <div><strong>Revenue is the north star — always.</strong> The question is not "which metric" but "how do we decompose revenue so we can manage it?" The answer is the equation:<br><br><strong style="font-size:16px">Revenue = MAU × ARPU</strong><br><br>MAU tells you how many users are generating revenue this month. ARPU tells you how much each one is worth. If MAU grows and ARPU grows, revenue grows — and you understand why. If revenue grows but ARPU is falling, you are adding low-value users and the growth is fragile. If ARPU grows but MAU is flat, you are squeezing the existing base without expanding it.<br><br><strong>MAU definition:</strong> users who completed at least one revenue-generating action in the last 30 days. A user who opens the app and checks their balance is not MAU. A yield accrual, card transaction, mining payout, trade executed, or loan drawn — those qualify. In every case EMCD earned something too.<br><br><strong>Why MAU over WAU?</strong> Crypto platforms have inherent weekly volatility — BTC moves 10% in a day, users flood in, WAU spikes, the following week is quiet and it drops. You spend half your time explaining noise. MAU smooths that volatility and gives you a stable baseline for strategic decisions. Bitso tracked MAU. Revolut reports MAU. Nubank tracks MAU. WAU lives inside the growth team as a tactical instrument for campaign evaluation and A/B tests — not as an executive metric.</div>
+  </div>
+
+  <div class="sh2">Why WAD and not revenue — the deliberate choice</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Why Revenue = MAU × ARPU?</strong></td><td>Bitso reported revenue as their north star — but what they were managing internally was active users and revenue per user. Reporting the output is clean for investors. Managing the inputs is how you actually grow. MAU × ARPU gives you both: the size of the active base and the value density. If revenue misses, you immediately know whether it is a MAU problem (not enough active users) or an ARPU problem (users not using enough products).</td></tr>
+        <tr><td><strong>Why can't EMCD just track revenue today?</strong></td><td>Because with a 22.3% activation rate, unmeasured retention, a 16% attribution gap, and undefined ARPU by BU, revenue is a black box. You cannot optimize a number you cannot decompose. Before you can grow revenue intelligently you need to know: how many users are active monthly (MAU), how much each generates (ARPU), and which BUs and ICPs produce the highest value users (ARPPU by BU). With no retention baseline today, WAU would create false urgency and false confidence alternately — MAU gives enough data per period to distinguish real trends from market-driven spikes.</td></tr>
+        <tr><td><strong>ARPU vs ARPPU — both required</strong></td><td>ARPU (revenue / total MAU) is the board metric — it tells the CEO whether the average user is getting more valuable. ARPPU (revenue / paying users only) is the growth team metric — it surfaces where value is actually concentrated. In crypto, top 10% of users generate 70-80% of revenue. ARPU hides this. ARPPU by BU reveals it: if INDESQ ARPPU is 5× Coinhold ARPPU, every active trader you upgrade from Coinhold to INDESQ is worth 5× the ARPU investment.</td></tr>
+        <tr><td><strong>The Revolut parallel</strong></td><td>Revolut, Nubank, and Bitso all tracked MAU and revenue per user separately — the strategic conversation was always which lever to pull. When MAU growth slowed, they pushed ARPU (Metal card, insurance, trading, premium tiers). When ARPU was healthy, they invested in MAU. Every new product Revolut launched was fundamentally an ARPU play dressed as a product play. EMCD's Mining → Coinhold bridge, Coinhold → INDESQ upgrade, and card + Onlock cross-sell are all ARPU plays. Bitso used this exact framework — MAU as the user base metric, ARPU to manage revenue density.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh2">Revenue decomposed — MAU × ARPU + ARPPU by BU</div>
+  <div class="callout blue">
+    <div class="callout-icon">i</div>
+    <div>Revenue = MAU × ARPU at the group level. Below that, each BU has its own MAU definition and its own ARPPU — because the revenue-generating action and the value per user are fundamentally different across Mining, Coinhold, and INDESQ. The hierarchy makes revenue manageable rather than just reportable.</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Level</th><th>Metric</th><th>Definition</th><th>Why this metric</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>EMCD Group</strong></td>
+          <td><strong>Revenue = MAU × ARPU</strong></td>
+          <td>Revenue is the north star. MAU (monthly active users with at least one revenue-generating action) × ARPU (revenue per MAU) = the number leadership tracks.</td>
+          <td>Reporting revenue as the output while managing MAU and ARPU as the inputs. If revenue misses, you know immediately whether it is a MAU problem or an ARPU problem — and which BU is responsible. This is how Revolut and Bitso actually managed growth — both tracked MAU as the user base metric, regardless of what they called their "north star."</td>
+        </tr>
+        <tr>
+          <td><strong>Coinhold</strong></td>
+          <td><strong>MAU + product activation rate</strong></td>
+          <td>MAU applies directly. Below it, the growth team uses WAU tactically for campaign evaluation. Activation event per ICP — First Coinhold Opened / First Card Top-up / First Loan Taken / First Staking / First Investment</td>
+          <td>Each campaign optimizes toward its own ICP-specific activation event. MAU is the strategic aggregation. WAU is used internally by the growth team to evaluate campaign performance week-by-week. A user who topped up a card and a user who opened yield are both MAU — but the growth team tracks both separately to know which campaigns, which ICPs, and which products are driving quality users.</td>
+        </tr>
+        <tr>
+          <td><strong>Mining app</strong></td>
+          <td><strong>Monthly Active Miners</strong></td>
+          <td>Miners with at least one payout received in the last 30 days</td>
+          <td>A miner's relationship with EMCD is hashrate and payouts — not deposits. MAU or WAD would measure the wrong thing entirely. The north star event is the payout: proof the pool worked, proof the miner earned.</td>
+        </tr>
+        <tr>
+          <td><strong>INDESQ</strong></td>
+          <td><strong>Monthly Active Traders (MAT)</strong></td>
+          <td>Users with at least one trade executed in the last 30 days</td>
+          <td>A pro trader who logs in but doesn't trade is not an active user. The event that creates value — and revenue — is the trade. Monthly cadence aligns with how trading revenue compounds — a trader active across 4 weeks is a fundamentally different user than one who traded once.</td>
+        </tr>
+        <tr>
+          <td><strong>Growth team (all BUs)</strong></td>
+          <td><strong>ARPPU by BU</strong></td>
+          <td>Revenue per paying user — tracked separately for Coinhold, Mining, and INDESQ</td>
+          <td>ARPU averages across the entire MAU base including low-value users. ARPPU surfaces where value is actually concentrated. If INDESQ ARPPU is 5× Coinhold ARPPU, every active trader upgraded from Coinhold to INDESQ is worth 5× the acquisition cost. Cross-sell strategy is ARPPU strategy.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-icon">i</div>
+    <div><strong>Performa is excluded from this hierarchy.</strong> Performa is a standalone B2B brand with its own identity, own strategy, and own metrics (TPV — Total Payment Volume). It does not sit under the EMCD consumer umbrella and is not part of the Revenue = MAU × ARPU equation above. Its north star is TPV, its benchmark is Bitso Business at $82B annualized volume, and its document is separate.</div>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-icon">!</div>
+    <div><strong>A leaking funnel makes acquisition pointless.</strong> Spending more on Performance campaigns while the activation rate is 22.3% and retention is unmeasured is filling a bucket with holes. Fix the bucket first.</div>
+  </div>
+
+  <div class="funnel-stage" style="border-color:#1a56a8">
+    <div class="funnel-head" style="background:#1a56a8; color:white">
+      <div>
+        <div class="funnel-step">Stage 1</div>
+        <div class="funnel-title">Acquisition — right users, not more users</div>
+        <div class="funnel-desc">Every decision evaluated against one question: will this user deposit within 30 days?</div>
+      </div>
+    </div>
+    <div class="funnel-body">
+      <div>
+        <div class="funnel-item-label">Key actions</div>
+        <div class="funnel-item-val">ICP-first targeting (yield seekers, crypto spenders). Referral Program investment before any paid channel budget increases. SEO Non-Brand content. Mining cross-sell (Engine 1). Paid rebuilt around ICP profiles, not broad crypto audiences.</div>
+      </div>
+      <div>
+        <div class="funnel-item-label">Metric</div>
+        <div class="funnel-item-val">New registrations by ICP · CAC by channel · Organic/paid ratio (target: 60/40)</div>
+        <div class="funnel-item-label" style="margin-top:12px">Owner</div>
+        <div class="funnel-item-val">Growth marketer + Growth PM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-stage" style="border-color:#0e5c3a">
+    <div class="funnel-head" style="background:#0e5c3a; color:white">
+      <div>
+        <div class="funnel-step">Stage 2</div>
+        <div class="funnel-title">Activation — first deposit is the start line, not the finish</div>
+        <div class="funnel-desc">The aha moment comes after the deposit. Engineer the path to it as fast as possible.</div>
+      </div>
+    </div>
+    <div class="funnel-body">
+      <div>
+        <div class="funnel-item-label">Key actions</div>
+        <div class="funnel-item-val">Portfolio simulator pre-deposit (show what $1,000 earns today). Day 1/3/7 behavioral triggers — not drip campaigns. Onlock as always-on activation hook for BTC holders. In-app walkthroughs. Happy moments (weekly yield summary, monthly staking report).</div>
+      </div>
+      <div>
+        <div class="funnel-item-label">Metric</div>
+        <div class="funnel-item-val">Activation CR target: 35% · Time to first deposit · 7-day and 30-day activation rate by channel</div>
+        <div class="funnel-item-label" style="margin-top:12px">Owner</div>
+        <div class="funnel-item-val">Growth PM + Product</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-stage" style="border-color:#4a3ab5">
+    <div class="funnel-head" style="background:#4a3ab5; color:white">
+      <div>
+        <div class="funnel-step">Stage 3</div>
+        <div class="funnel-title">Engagement — more products, more reasons to stay</div>
+        <div class="funnel-desc">A user with one product is fragile. A user with three products is loyal.</div>
+      </div>
+    </div>
+    <div class="funnel-body">
+      <div>
+        <div class="funnel-item-label">Cross-product triggers</div>
+        <div class="funnel-item-val">Coinhold yield → Card (3 days post-deposit). BTC price drop → Onlock. Active trader → INDESQ upgrade. Mining payout → Coinhold deposit. Yield milestone → Referral trigger.</div>
+      </div>
+      <div>
+        <div class="funnel-item-label">Metric</div>
+        <div class="funnel-item-val">Products per user · Monthly transaction frequency · Referral sends per active user</div>
+        <div class="funnel-item-label" style="margin-top:12px">Owner</div>
+        <div class="funnel-item-val">Growth PM + CRM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-stage" style="border-color:#c9963a">
+    <div class="funnel-head" style="background:#c9963a; color:white">
+      <div>
+        <div class="funnel-step">Stage 4</div>
+        <div class="funnel-title">Retention — the missing layer</div>
+        <div class="funnel-desc">Currently not measured. Without it, growth cannot compound regardless of acquisition spend.</div>
+      </div>
+    </div>
+    <div class="funnel-body">
+      <div>
+        <div class="funnel-item-label">Key actions</div>
+        <div class="funnel-item-val">MAU tracking established immediately. Win-back sequences (30/60 days inactive). NPS after first yield, first card transaction, first Onlock. Monthly newsletter. Feature update videos. Cohort retention by channel.</div>
+      </div>
+      <div>
+        <div class="funnel-item-label">Metric</div>
+        <div class="funnel-item-val">MAU month-over-month · 30-day retention rate · Churn by acquisition channel cohort</div>
+        <div class="funnel-item-label" style="margin-top:12px">Owner</div>
+        <div class="funnel-item-val">Data analyst + Product</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-stage" style="border-color:#c00000">
+    <div class="funnel-head" style="background:#c00000; color:white">
+      <div>
+        <div class="funnel-step">Stage 5</div>
+        <div class="funnel-title">Monetization — revenue per user, not just user count</div>
+        <div class="funnel-desc">ARPU and ARPPU replace registration count as the monetization north stars.</div>
+      </div>
+    </div>
+    <div class="funnel-body">
+      <div>
+        <div class="funnel-item-label">Key levers</div>
+        <div class="funnel-item-val">Onlock interest revenue — always-on, cycle-proof revenue regardless of market direction. AUM growth as yield spread proxy. Card interchange — daily-use users have highest ARPU. Xstocks + PreIPO margins (Q3+, highest margin products).</div>
+      </div>
+      <div>
+        <div class="funnel-item-label">Metric</div>
+        <div class="funnel-item-val">ARPU · ARPPU · AUM growth · Onlock loan volume</div>
+        <div class="funnel-item-label" style="margin-top:12px">Owner</div>
+        <div class="funnel-item-val">Finance + Growth PM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh2" style="margin-top:40px">Lifecycle triggers — replace campaigns with behavioral responses</div>
+  <div class="callout teal">
+    <div class="callout-icon">i</div>
+    <div>Stop asking "what campaign should we run?" Start asking "what did this user just do or not do, and what is the right response?" Revolut runs 200+ behavioral triggers. EMCD runs campaigns. The shift is a philosophy change, not a technology investment.</div>
+  </div>
+  <div class="trigger-list">
+    <div class="trigger-row"><div class="trigger-state">Registered, not deposited — day 1</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Show live Coinhold yield rate. "See what your first $100 earns." Deep link.</div><div class="trigger-channel">Push + email</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">Not deposited — day 3</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Portfolio simulator. "If you had deposited $1,000 on day 1 you'd have earned $X."</div><div class="trigger-channel">In-app + email</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">Not deposited — day 7</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Onlock option or yield offer. Single step. No forms.</div><div class="trigger-channel">Push + SMS</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">Deposited, one product — day 3</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Introduce next product based on entry. Coinhold → Card. Card → Coinhold.</div><div class="trigger-channel">In-app</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">BTC drops 5%+</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Onlock: "Don't sell. Borrow." Only to users with BTC balance.</div><div class="trigger-channel">Push notification</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">Mining payout lands</div><div class="trigger-sep">→</div><div><div class="trigger-msg">"Your payout just arrived. Put it to work at 14% APY." One tap → Coinhold.</div><div class="trigger-channel">Push</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">First $100 yield earned</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Celebrate. "You just earned $100 without doing anything." + Referral trigger.</div><div class="trigger-channel">In-app</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">Weekly summary — every Monday</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Your earnings this week: $X. Portfolio: $X. Staking rewards: $X. These happy moments build loyalty.</div><div class="trigger-channel">Push + email</div></div></div>
+    <div class="trigger-row"><div class="trigger-state">30 days inactive</div><div class="trigger-sep">→</div><div><div class="trigger-msg">Win-back: what changed + new feature highlight.</div><div class="trigger-channel">Email</div></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══ PAID STRATEGY ══ -->
+<div id="paid" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 5</div>
+    <h2 class="page-title">Paid media strategy + channels where to invest</h2>
+    <p class="page-desc">The shift from direct-response-only to a three-stage funnel. You cannot convert someone who does not know you exist.</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-icon">→</div>
+    <div>The current paid strategy runs conversion campaigns only. This is proposing marriage on a first date. Users who have never heard of EMCD, never understood Coinhold, and never had a reason to trust the platform are being asked to deposit money. The 10.7% CR reflects this.</div>
+  </div>
+
+  <div class="campaign-funnel">
+    <div class="cf-stage" id="cf1">
+      <div class="cf-head" style="background:#1a56a8" onclick="toggleCF('cf1')">
+        <div>
+          <div class="cf-step-label">Stage 1 — widest reach</div>
+          <div class="cf-title">Awareness — trust and brand</div>
+          <div class="cf-subtitle">Who is EMCD and why should I trust them with my crypto?</div>
+        </div>
+        <div class="cf-chevron">▶</div>
+      </div>
+      <div class="cf-body" style="border-left-color:#1a56a8">
+        <div class="cf-grid">
+          <div>
+            <div class="cf-field-label">Audience</div>
+            <div class="cf-field-val">Each BU targets a distinct audience at the awareness stage — campaigns must never be generic:<br><br>
+<strong>Mining:</strong> Professional miners and farm operators actively looking for a better pool — hashrate yield, payout reliability, dual mining efficiency.<br>
+<strong>Coinhold — yield seeker:</strong> Crypto holders with USDT or BTC sitting idle on Binance or in cold wallets, earning 0%.<br>
+<strong>Coinhold — crypto spender:</strong> Freelancers, remote workers, digital nomads earning in crypto who need to spend in fiat daily.<br>
+<strong>INDESQ:</strong> Active traders who already use exchanges and want a pro-grade alternative with better fees and tools.</div>
+            <div class="cf-field-label" style="margin-top:14px">Products</div>
+            <div class="cf-field-val">At awareness stage the user does not know the product name — they respond to what they will get. Lead with the value proposition, not the product label:<br><br>
+<strong>Mining:</strong> "The pool that pays you every day — and puts your earnings to work automatically." Reliability + yield in one sentence.<br>
+<strong>Coinhold — yield seeker:</strong> "The app where your crypto earns up to 14% APY, you spend with a card, get liquidity without selling, and you can diversify your investments." The full value proposition in one line — outcome first, product second.<br>
+<strong>Coinhold — crypto spender:</strong> "Earn in crypto, spend anywhere. Your USDT works for you between transactions." Daily utility + passive yield.<br>
+<strong>INDESQ:</strong> "Professional crypto trading — the tools serious traders actually need." Control + execution quality.</div>
+            <div class="cf-field-label" style="margin-top:14px">Signals</div>
+            <div class="cf-field-val"><strong>Events:</strong> App Install · Page Visit · Visit-to-Install rate<br><br>You are not measuring conversion here — you are measuring reach quality. High visits with low installs means wrong audience, not wrong budget.</div>
+          </div>
+          <div>
+            <div class="cf-field-label">Channels</div>
+            <div class="pill-row">
+              <span class="pill">YouTube</span><span class="pill">TikTok (native)</span><span class="pill">Programmatic video</span><span class="pill">Reddit</span><span class="pill">LinkedIn</span><span class="pill">PR + press</span><span class="pill">Content creators</span><span class="pill">SEO / LLM content</span>
+            </div>
+            <div class="cf-field-label" style="margin-top:14px">Note</div>
+            <div class="cf-field-val">Content creators are credibility builders — not affiliates. KOLs with genuine mining or crypto communities build trust; KOLs paid for reach are expensive ads.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cf-stage" id="cf2">
+      <div class="cf-head" style="background:#0e5c3a" onclick="toggleCF('cf2')">
+        <div>
+          <div class="cf-step-label">Stage 2 — narrower, warmer</div>
+          <div class="cf-title">Consideration — product education</div>
+          <div class="cf-subtitle">What can I specifically do with EMCD that I cannot do elsewhere?</div>
+        </div>
+        <div class="cf-chevron">▶</div>
+      </div>
+      <div class="cf-body" style="border-left-color:#0e5c3a">
+        <div class="cf-grid">
+          <div>
+            <div class="cf-field-label">Audience</div>
+            <div class="cf-field-val">Registered users. Warm leads. Segment-specific: yield seekers see Coinhold yield content. Crypto spenders see card content. Miners see the bridge to Coinhold.</div>
+            <div class="cf-field-label" style="margin-top:14px">Products</div>
+            <div class="cf-field-val">ICP-specific product message per segment — yield seekers see APY content, crypto spenders see card + spending utility, miners see the Coinhold bridge, INDESQ prospects see pro trading tools. One campaign = one ICP = one message.</div>
+            <div class="cf-field-label" style="margin-top:14px">KPIs</div>
+            <div class="cf-field-val"><strong>Events:</strong> Registration Complete · KYC Complete<br><br>Registrations by campaign and channel · KYC completion rate (separates serious prospects from window shoppers) · Registration-to-deposit rate by campaign — a campaign with 1,000 regs at 5% deposit rate is worse than 200 regs at 30%. Time from install to registration.</div>
+          </div>
+          <div>
+            <div class="cf-field-label">Channels</div>
+            <div class="pill-row">
+              <span class="pill">Meta / Instagram</span><span class="pill">TikTok (demos)</span><span class="pill">Email</span><span class="pill">In-app</span><span class="pill">Push</span><span class="pill">Retargeting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cf-stage" id="cf3">
+      <div class="cf-head" style="background:#a63020" onclick="toggleCF('cf3')">
+        <div>
+          <div class="cf-step-label">Stage 3 — tightest, highest intent</div>
+          <div class="cf-title">Conversion — activation event</div>
+          <div class="cf-subtitle">The event that defines activation depends on the BU. One step. No friction.</div>
+        </div>
+        <div class="cf-chevron">▶</div>
+      </div>
+      <div class="cf-body" style="border-left-color:#a63020">
+        <div class="cf-grid">
+          <div>
+            <div class="cf-field-label">Audience</div>
+            <div class="cf-field-val">Registered users who have not activated any product (highest priority). Users who activated one product but have not cross-sold into a second. Mining app users post-launch with no Coinhold bridge activation.</div>
+            <div class="cf-field-label" style="margin-top:14px">Mechanics</div>
+            <div class="cf-field-val">Portfolio simulator ("see what your $1,000 earns today"). Onlock calculator ("how much can you borrow against your BTC?"). Single-step CTA — no multi-step flows, no forms. One tap.</div>
+            <div class="cf-field-label" style="margin-top:14px">KPIs</div>
+            <div class="cf-field-val"><strong>The conversion event must match the acquisition message — and for Coinhold, it varies by ICP:</strong><br><br>
+<strong>Coinhold — yield seeker →</strong> First Coinhold opened (funded the yield product — they did what the campaign promised)<br>
+<strong>Coinhold — crypto spender →</strong> First card top-up (money on the card — the spending utility is live)<br>
+<strong>Coinhold — Onlock / BTC holder →</strong> First loan taken (highest commitment threshold — user borrowed against BTC instead of selling)<br>
+<strong>Coinhold — staking →</strong> First staking made<br>
+<strong>Coinhold — crypto investor →</strong> First investment made (index / PreIPO / Xstock)<br>
+<strong>Mining app →</strong> First payout received (proof the pool works — the miner sees real BTC land)<br>
+<strong>INDESQ →</strong> First trade executed<br><br>
+A user who saw a card ad and then funded Coinhold yield has not converted on the campaign's terms — even though they deposited. The event must match the promise. Running mixed campaigns without separate event definitions produces signals too diluted to optimize toward your best users.<br><br>
+<strong>Universal quality signals across all BUs:</strong> Time to conversion event · Value of event (deposit size, loan size, trade volume) · Conversion-to-WAD rate by campaign · CAC target &lt;$8 for paid.</div>
+          </div>
+          <div>
+            <div class="cf-field-label">Channels</div>
+            <div class="pill-row">
+              <span class="pill">Retargeting</span><span class="pill">Push</span><span class="pill">Email</span><span class="pill">WhatsApp</span><span class="pill">SMS</span><span class="pill">In-app banners</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh">Creative testing framework — all variables, one month</div>
+  <div class="callout gold">
+    <div class="callout-icon">!</div>
+    <div>Lock the Key Visual Identity first — then run all variables simultaneously in month 1. Sequential wave testing is a waterfall mindset: by wave 6 you are 20+ weeks in, the market has moved, and the budget has been spent conservatively. The right approach: one variable isolated per ad set, all ad sets live at the same time, read everything at day 30, kill losers, scale winners.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Variable</th><th>Ad set A</th><th>Ad set B</th><th>Budget priority</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Message angle</strong></td><td>Benefit-led: "earn 14% on your USDT"</td><td>Urgency: "your USDT is losing value every day"</td><td>High — highest leverage variable, affects everything else downstream</td></tr>
+        <tr><td><strong>Visual treatment</strong></td><td>Real person using the app (lifestyle)</td><td>Product UI mockup (feature-focused)</td><td>High — production cost is low, impact on CTR is high</td></tr>
+        <tr><td><strong>CTA copy</strong></td><td>Outcome: "start earning"</td><td>Action: "open Coinhold now"</td><td>Medium — small budget needed to reach significance</td></tr>
+        <tr><td><strong>Social proof</strong></td><td>User stat: "join 500K+ users"</td><td>Real result: "I earned $X in 30 days"</td><td>Medium — cheap to produce, tests trust mechanic</td></tr>
+        <tr><td><strong>Urgency / offer</strong></td><td>Pure product value (no offer)</td><td>Time-limited: "0% fee on first deposit this week"</td><td>Medium — tests price sensitivity of the audience</td></tr>
+        <tr><td><strong>Format</strong></td><td>Static image</td><td>Short video (6–15 sec)</td><td>High — video production cost is higher; confirm message direction first, then invest in video</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh">Channel mix — full stack, not just performance</div>
+  <div class="callout blue">
+    <div class="callout-icon">→</div>
+    <div>The current channel mix is Performance-only (paid search + Meta). That is a single tool for a multi-stage problem. Running bottom-of-funnel channels without top-of-funnel investment is why the Performance CR is 10.7%: asking for a deposit from a user who has never heard of EMCD. The full-stack mix activates each funnel stage differently — video builds trust at the top, retargeting converts at the bottom.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Channel</th><th>Funnel stage</th><th>Role and rationale</th></tr></thead>
+      <tbody>
+        <tr><td><strong>TikTok (native video)</strong></td><td>Awareness + Consideration</td><td>Fastest-growing crypto education channel. Organic + paid. Native-feel content dramatically outperforms polished ads — hook in first 3 seconds is everything. EMCD's target ICP (25–35, crypto-native, mobile-first) is TikTok's core demographic. Lemon grew explosively through TikTok in Argentina. KOLs here are credibility builders embedded in community, not affiliates paid for registrations.</td></tr>
+        <tr><td><strong>YouTube (long-form + Shorts)</strong></td><td>Awareness + SEO/LLM</td><td>Mining tutorials, yield explained, Onlock walkthroughs. YouTube content feeds Google search AND LLM training — every video is both an acquisition channel and an SEO asset compounding for years. Mining community watches YouTube obsessively: hashprice explainers, ASIC setup, profitability calculators. EMCD should own this content in Russian and English. Each video is a permanent acquisition asset.</td></tr>
+        <tr><td><strong>Programmatic video</strong></td><td>Awareness</td><td>Mobile-first. In-app placements are the primary inventory — mobile games, news apps, finance apps, utility apps. Web inventory (news sites, finance content, YouTube pre-roll) is secondary. EMCD's core markets — CIS, LATAM, emerging Europe — are mobile-first by default: users discover products in apps, not browsers. Builds recognition before the user ever searches for a yield platform. CPMs are lower in volatile market cycles — high reach at low cost across app and web inventory.</td></tr>
+        <tr><td><strong>Meta / Instagram</strong></td><td>Consideration + Conversion</td><td>Retargeting and ICP-targeted campaigns. Best for product-specific creative: yield simulator, card demo, Onlock calculator. Pairs with the A/B testing framework above. The channel where most conversion budget lands — but only after KVI is locked and the month-1 creative test has identified the winning message angle and visual.</td></tr>
+        <tr><td><strong>X (Twitter)</strong></td><td>Awareness + Community</td><td>Crypto Twitter is the opinion-forming layer of the industry. Brand presence shapes perception among the 5% of users who influence the other 95%. Market-moment campaigns (BTC price moves) perform best here. "Don't sell your BTC" Onlock messaging resonates natively on X. Low cost to be present; high cost to be absent.</td></tr>
+        <tr><td><strong>Telegram (owned + community + ads)</strong></td><td>Consideration + Retention</td><td><strong>Where it matters:</strong> CIS (Russia, Ukraine, Kazakhstan, Georgia) — Telegram is the primary communication channel, not a secondary one. Turkey and parts of LATAM are also high-Telegram markets. Western Europe: low relevance, do not prioritize.<br><br><strong>Owned channel</strong> — EMCD's branded channel for product announcements, yield rate updates, market moments, and Coinhold milestones. Every BU has a touchpoint here: Mining payouts, Coinhold APY updates, INDESQ trading alerts.<br><br><strong>Community presence</strong> — Mining pool Telegram groups, crypto yield communities, trader groups. Expert voice, not advertising. Answer hashprice questions, share pool data, contribute knowledge. The credibility built here converts more efficiently than any paid placement in CIS markets.<br><br><strong>Telegram Ads</strong> — paid placements inside Telegram channels relevant to crypto, finance, and mining in CIS and Turkey. Underused by most competitors. Cost-effective reach within high-intent communities that cannot be reached through Meta or Google in these markets.</td></tr>
+        <tr><td><strong>Content creators (KOLs)</strong></td><td>Awareness + Consideration</td><td>Not affiliates — credibility builders. Miners with genuine communities reviewing EMCD's pool. Crypto-yield creators showing real Coinhold returns. Q1 data: KOLs at 12.7% CR because they were used as affiliates. The model is wrong, not the channel. Restructure: KOLs earn for authentic content, not registration volume.<br><br><strong>Evaluate on two signals:</strong> (1) <strong>30-day activation rate</strong> — did the KOL's audience actually convert and activate a product, not just register? (2) <strong>Organic brand keyword lift</strong> — did branded search volume for EMCD increase in the 30 days after the content went live? Activation tells you whether the content drove short-term conversion. Brand keyword lift tells you whether it built awareness that compounds. A KOL who drives 50 activations and a 20% brand search lift is worth 10× a KOL who drives 500 registrations at 5% activation and no search lift.</td></tr>
+        <tr><td><strong>SEO + LLM content</strong></td><td>Awareness (organic, compounding)</td><td>Structured articles, FAQ formats, entity pages optimized for ChatGPT, Perplexity, Google SGE, Gemini, and Claude. Every well-written piece compounds for years. YouTube + Reddit + LinkedIn feed LLM training data. SEO Non-Brand already delivers 26.4% CR and $306K avg coinhold balance with zero paid support — the highest-quality organic traffic in the portfolio. Investment here is permanently underallocated.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh">Video — why it cannot be optional</div>
+  <div class="callout green">
+    <div class="callout-icon">★</div>
+    <div><strong>Video is not a creative format — it is a trust mechanism.</strong> In crypto, with FTX still in living memory, users do not deposit money with a platform they know only from a static banner ad. A founder explaining the product, a miner showing real payouts, a user showing Coinhold earnings in real time — video compresses the trust timeline from weeks to minutes. Lemon built 5.5M users with card + video. Phantom hit 20M MAUs partly because the product experience was worth filming. EMCD needs a video identity before the paid budget scales.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Video format</th><th>Where</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>6–15 sec product demo</strong></td><td>TikTok, Instagram Reels, YouTube Shorts, programmatic pre-roll</td><td>Shows the product doing something remarkable — Coinhold yield updating live, Onlock giving liquidity in 2 taps, card spending in 3 seconds. No explanation. Show, don't tell. Run this ad set in month 1 alongside static — video production cost is higher so confirm message direction works in static first before scaling video spend.</td></tr>
+        <tr><td><strong>30–60 sec trust video</strong></td><td>YouTube pre-roll, programmatic, paid social</td><td>Real user or founder. "I mine BTC on EMCD, my payouts go to Coinhold, I spend with the card." The closed-loop story in under a minute. This is the Awareness stage creative — the first thing a non-user sees about EMCD.</td></tr>
+        <tr><td><strong>2–5 min educational</strong></td><td>YouTube channel, landing pages</td><td>How Coinhold yield works. How Onlock protects your BTC position. Hashprice explained for miners. These videos rank in search, feed LLMs, and compound indefinitely. Each one is a permanent acquisition asset that keeps working after the campaign budget stops.</td></tr>
+        <tr><td><strong>Weekly market update</strong></td><td>YouTube Shorts, TikTok, X</td><td>"BTC dropped 3% this week. Here's what EMCD users did." Market commentary with a product angle. Builds the expert voice. Triggers awareness at scale during high-traffic market moments — the moments when crypto-curious users are most receptive.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<div id="coinhold" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 6</div>
+    <h2 class="page-title">Coinhold</h2>
+    <p class="page-desc">The core consumer business. The widest product suite in the group. The most direct revenue connection. And the clearest gap: no proven standalone acquisition engine.</p>
+  </div>
+
+  <div class="callout purple">
+    <div class="callout-icon">★</div>
+    <div>Coinhold is the financial infrastructure for your crypto. It works when BTC goes up. It works when BTC goes down. Because it is not a bet — it is how your crypto works for you every day. This is what "useful crypto" means.</div>
+  </div>
+
+  <div class="sh">The full product suite</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>What it does</th><th>ICP fit</th><th>Status</th><th>Growth angle</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Coinhold Earnings</strong></td>
+          <td>Up to 14% APY on USDT. Flexible and fixed-term plans (30–360 days). Daily accruals. Interest compounding. Auto-transfer from mining.</td>
+          <td>Yield seeker</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Primary acquisition hook for yield seeker ICP. In a correction, stablecoin yield is the most rational financial decision available. Always-on campaign.</td>
+        </tr>
+        <tr>
+          <td><strong>Card</strong></td>
+          <td>Spend USDT anywhere Visa is accepted. Tops up instantly from Coinhold yield or mining payouts. Apple Pay + Google Pay compatible.</td>
+          <td>Crypto spender</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Entry product for crypto spender ICP. Daily-use card users have the highest ARPU in the portfolio — every transaction is both a retention event and a revenue event. Card interchange compounds with user activity.</td>
+        </tr>
+        <tr>
+          <td><strong>Onlock (loans)</strong></td>
+          <td>Borrow against BTC holdings without selling. Get liquidity in USDT while keeping the crypto position open.</td>
+          <td>BTC holder</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Always-on product — not a market-moment campaign. When BTC is down: don't sell at a loss, borrow. When BTC is up: don't trigger a taxable event, borrow. The pitch works in both directions. First loan taken is the conversion event.</td>
+        </tr>
+        <tr>
+          <td><strong>Staking</strong></td>
+          <td>Stake crypto assets directly inside Coinhold. Earn on-chain staking rewards without managing validators, wallets, gas fees, or DeFi protocols. Transparent, secure, custodial.</td>
+          <td>DeFi-curious user</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Own acquisition ICP: users who want DeFi yield generation without the complexity of interacting with protocols directly. They understand the concept — proof of stake, validator rewards, on-chain yield — but find the actual DeFi experience too risky or too technical. Coinhold's staking is the bridge: real DeFi yield, zero DeFi friction. Acquisition message: "Earn on-chain staking rewards. No wallets. No gas. No risk of getting it wrong." First staking made is the conversion event.</td>
+        </tr>
+        <tr>
+          <td><strong>Indexes</strong></td>
+          <td>Managed crypto portfolios and indexes. Diversified exposure without active trading. Professionally managed allocation.</td>
+          <td>Crypto investor</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Safe harbor product in volatile markets. When BTC is down 37%, the user who tried to self-manage their portfolio has likely lost more than the index. Managed allocation is the rational argument for this ICP. Entry into the crypto investor segment.</td>
+        </tr>
+        <tr>
+          <td><strong>Ramps</strong></td>
+          <td>Deposit crypto via multiple networks and assets, credit card, internal transfers, and P2P. Full on/off ramp infrastructure inside the app.</td>
+          <td>All ICPs</td>
+          <td><span class="td-tag" style="background:#e8f4ee;color:#0a3d22">Live</span></td>
+          <td>Activation enabler — not a growth product in itself but a critical friction-removal layer. Every ICP needs to get money in and out easily. Ramp friction is one of the most common activation killers. Measure ramp drop-off rate as a product health signal.</td>
+        </tr>
+        <tr>
+          <td><strong>Xstocks</strong></td>
+          <td>Tokenized stocks — currently 12 assets. Buy fractional exposure to global equities from within Coinhold using crypto.</td>
+          <td>Crypto investor</td>
+          <td><span class="td-tag" style="background:#faf3e8;color:#6b4e0a">Building</span></td>
+          <td>Genuine differentiation in 2026 — Bitpanda offers stocks but not from a crypto-native base with yield + card + loans. Coinhold's combination is unique. Do not market until the asset selection is wide enough to be compelling. 12 stocks is a starting point, not a campaign.</td>
+        </tr>
+        <tr>
+          <td><strong>PreIPO</strong></td>
+          <td>Access to pre-IPO investment opportunities from within the Coinhold app. Invest in companies before they go public using crypto.</td>
+          <td>Crypto investor</td>
+          <td><span class="td-tag" style="background:#faf3e8;color:#6b4e0a">Building</span></td>
+          <td>Highest LTV product in the portfolio if executed. The crypto investor ICP has capital and appetite for illiquid, high-upside opportunities — this is the product that makes Coinhold their primary investment platform, not just a yield account. First investment made is the conversion event.</td>
+        </tr>
+        <tr>
+          <td><strong>RWA (Real World Assets)</strong></td>
+          <td>Tokenized real-world assets — expected future addition. Exposure to tokenized T-bills, money market funds, real estate, and other off-chain assets from within Coinhold.</td>
+          <td>Crypto investor</td>
+          <td><span class="td-tag" style="background:#e8ecf3;color:#1f4e79">Roadmap</span></td>
+          <td>Forward benchmark: Ondo Finance ($500M+ TVL). When live, RWA becomes the institutional-grade yield story that justifies premium positioning. Do not market before the product is shipped. This is the product that makes Coinhold genuinely comparable to a full financial platform, not just a crypto app.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh">The three ICPs — who and in what order</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ICP</th><th>Who they are</th><th>Entry product</th><th>Conversion event</th><th>When</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1 — Yield seeker</strong></td>
+          <td>Has USDT sitting idle on Binance earning 0%. Finds DeFi too complex. Wants simple, custodial, high yield.</td>
+          <td>Coinhold Earnings — 14% APY on USDT. "Your USDT is losing purchasing power. Fix it today."</td>
+          <td>First Coinhold opened</td>
+          <td><span class="td-tag" style="background:#e8eef8;color:#0d2d5e">Now</span></td>
+        </tr>
+        <tr>
+          <td><strong>2 — Crypto spender</strong></td>
+          <td>Freelancer, remote worker, digital nomad. Earns in USDT, needs to spend in fiat. Daily use — doesn't care about BTC price.</td>
+          <td>Card — "Pay with USDT anywhere. Earn yield on what you don't spend." Highest daily engagement frequency.</td>
+          <td>First card top-up</td>
+          <td><span class="td-tag" style="background:#e8eef8;color:#0d2d5e">Now</span></td>
+        </tr>
+        <tr>
+          <td><strong>3 — Crypto investor</strong></td>
+          <td>Wants Xstocks, PreIPO, managed indexes, RWA. Higher LTV. More sophisticated. Needs products fully live and proven.</td>
+          <td>Indexes as entry (live now). Xstocks + PreIPO + RWA when fully shipped. Do not market what is not ready.</td>
+          <td>First investment made</td>
+          <td><span class="td-tag" style="background:#e8ecf3;color:#1f4e79">Q3+</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh">The ecosystem is the product — the positioning that wins</div>
+  <div class="callout purple">
+    <div class="callout-icon">★</div>
+    <div>Individually, every Coinhold product has competitors. 14% APY? Nexo, Binance Earn, OKX. Card? Lemon, Phantom, Revolut Crypto. Loans? Nexo, Aave. Staking? Every major exchange. Indexes? Bitpanda, eToro.<br><br>
+But the combination — earn yield, spend with a card, borrow without selling, stake, invest in stocks and pre-IPO opportunities, all from one app, one balance, zero internal transfer fees — that is genuinely rare. WhiteBIT is the closest structural peer and they don't have the full stack. Phantom has wallet + card, not loans or PreIPO. Lemon has yield + card, not staking or indexes. Bitpanda has multi-asset, not loans or the mining bridge.<br><br>
+<strong>The ecosystem IS the differentiation. Communicate it as such.</strong></div>
+  </div>
+
+  <div class="sh2">Why ecosystem positioning directly impacts MAU and ARPU</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>User with</th><th>MAU impact</th><th>ARPU impact</th><th>Benchmark proof</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1 product</strong></td>
+          <td>Opens app for one reason. Easily replaced by a competitor with a better rate on that single product.</td>
+          <td>One revenue stream. Low switching cost.</td>
+          <td>Nexo lost users to Binance Earn when rates changed — single-product users have zero loyalty.</td>
+        </tr>
+        <tr>
+          <td><strong>2–3 products</strong></td>
+          <td>Multiple reasons to open the app weekly. Yield accrual, card spend, loan management — each is a separate engagement moment.</td>
+          <td>Yield spread + card interchange + loan interest. ARPU compounds with each product added.</td>
+          <td>Revolut's ARPU tripled when users adopted 3+ products. Bitso's highest-LTV users hold 3+ products simultaneously.</td>
+        </tr>
+        <tr>
+          <td><strong>4+ products</strong></td>
+          <td>The app is their financial OS. Uninstalling means losing yield, card, liquidity, investments simultaneously. Churn becomes structurally difficult.</td>
+          <td>Maximum ARPU. This user is the north star of Coinhold's retention strategy.</td>
+          <td>Revolut's power users have 7+ products active. They have a 95%+ 12-month retention rate. This is the model.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-icon">→</div>
+    <div><strong>The acquisition implication:</strong> lead campaigns with the entry product that matches the ICP (yield for yield seekers, card for crypto spenders). But the onboarding flow, lifecycle triggers, and in-app experience immediately surface the ecosystem. The goal is not to acquire a card user — it is to acquire a user who starts with the card and discovers yield, loans, and staking within 30 days. That journey is engineered, not left to chance.</div>
+  </div>
+
+  <div class="sh">Two acquisition engines — both must work independently</div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Engine</th><th>What it is</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Engine 1 — Mining bridge</strong></td>
+          <td>Every miner in the Mining app is a pre-qualified Coinhold prospect. Cross-sell mechanic built into the May 2026 launch. Zero CAC. Highest intent cohort in the portfolio.</td>
+          <td>The gift — capture it fully. Measure Mining → Coinhold conversion rate in the first 30 days before spending anything on paid acquisition. If miners convert at 25%+, that sets the benchmark paid channels must beat on LTV.</td>
+        </tr>
+        <tr>
+          <td><strong>Engine 2 — Direct Coinhold acquisition</strong></td>
+          <td>Own ICP campaigns, own channels, own activation proof. Yield seeker and crypto spender ICPs acquired independently of Mining. The proof that Coinhold can stand alone.</td>
+          <td>The imperative — a Coinhold that cannot grow without miners has not found its own market. Lemon built 5.5M users without a single mining user. This is the engine that makes Coinhold a standalone business, not a cross-sell appendage.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<!-- ══ PRIORITIES ══ -->
+<div id="priorities" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 7</div>
+    <h2 class="page-title">What we do — in order</h2>
+    <p class="page-desc">14 priorities. The first five are non-negotiable preconditions. Nothing else moves until these are done.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:44px">#</th><th>Priority</th><th>Why it matters</th><th style="width:90px">When</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="priority-num prio-now">1</div></td>
+          <td><strong>Fix attribution — Appsflyer + UTM governance</strong></td>
+          <td>16% of registrations have zero channel data. Every CAC calculation is wrong. Every optimization decision is unreliable. Owner assigned. UTM discipline across every touchpoint — every link, every campaign, every KOL post, every partner URL. 2-week deadline, no exceptions.</td>
+          <td><span class="td-tag" style="background:#fde8e8;color:#7a0000">Now</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-now">2</div></td>
+          <td><strong>Define Revenue = MAU × ARPU as north star</strong></td>
+          <td>Revenue is the north star — always. MAU and ARPU are how it is decomposed and managed. Define MAU with revenue-generating criteria per BU. Define ARPU globally and ARPPU per BU. WAU reserved for growth team tactical use. Build the Revenue = MAU × ARPU dashboard. Replace registration count as headline KPI immediately.</td>
+          <td><span class="td-tag" style="background:#fde8e8;color:#7a0000">Now</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-now">3</div></td>
+          <td><strong>Define activation targets per BU and ICP</strong></td>
+          <td>Lock activation event definitions with Analytics and Product before any campaign launches. Coinhold: first Coinhold opened (yield seeker) / first card top-up (crypto spender) / first loan taken (Onlock ICP) / first staking / first investment. Mining: first payout received. INDESQ: first trade executed. Set 7/15/30-day windows per event. Dashboard by channel and BU.</td>
+          <td><span class="td-tag" style="background:#fde8e8;color:#7a0000">Now</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-now">4</div></td>
+          <td><strong>Define top 3 priority GEOs per BU</strong></td>
+          <td>EMCD operates in 120+ countries. Without a GEO decision, every campaign runs in 120 directions and no market reaches critical mass. Mining: grounded in pool geography and miner concentration. Coinhold: where are the $306K avg balance SEO users located + where is USDT demand driven by financial instability? INDESQ: where Coinhold already has active traders ready to upgrade. This decision unlocks language investment, KOL selection, referral mechanics, and channel prioritization.</td>
+          <td><span class="td-tag" style="background:#fde8e8;color:#7a0000">Now</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-now">5</div></td>
+          <td><strong>Rebuild paid strategy — full funnel + mobile-first</strong></td>
+          <td>Current model is Performance-only (bottom of funnel only, 10.7% CR, $15.8 CAC). Shift to Awareness → Consideration → Conversion with BU and ICP-specific campaigns. Mobile-first creative — in-app programmatic is primary, not web. Lock KVI before any creative testing. Run all creative variables simultaneously in month 1, read at day 30, kill losers, scale winners.</td>
+          <td><span class="td-tag" style="background:#fde8e8;color:#7a0000">Now</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-q2">6</div></td>
+          <td><strong>Scale Referral Program</strong></td>
+          <td>31% CR, $34.8K LTV — running at 20% capacity. Best channel in the portfolio. Double volume target. Localize incentive by market — "Earn USDT" lands differently in CIS vs. Europe. Trigger referral at peak satisfaction moments: first yield earned, first card transaction, first payout received. Target K-factor > 0.3 within 6 months.</td>
+          <td><span class="td-tag" style="background:#f5e8e4;color:#6b1a08">Q2</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-q2">7</div></td>
+          <td><strong>Build lifecycle trigger system</strong></td>
+          <td>To be reviewed with CRM Team</td>
+          <td><span class="td-tag" style="background:#f5e8e4;color:#6b1a08">Q2</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-q2">8</div></td>
+          <td><strong>Launch ecosystem campaigns — Coinhold yield seeker + crypto spender ICPs</strong></td>
+          <td>Lead with the ecosystem value proposition, not individual products. "The app where your crypto earns, you spend with a card, get liquidity without selling, and diversify your investments." Entry product per ICP: Coinhold Earnings for yield seekers, card for crypto spenders. Conversion event must match the acquisition message. Measure 30-day cross-product activation — single product activation is acquisition, multi-product is retention.</td>
+          <td><span class="td-tag" style="background:#f5e8e4;color:#6b1a08">Q2</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-q2">9</div></td>
+          <td><strong>Restructure KOL strategy</strong></td>
+          <td>KOLs at 12.7% CR in Q1 because they were used as affiliates. Restructure: KOLs earn for authentic content, not registration volume. Evaluate on two signals only — 30-day activation rate and organic brand keyword lift in the 30 days post-content. A KOL who drives 50 activations + 20% brand search lift is worth 10× one who drives 500 regs at 5% activation and zero search lift.</td>
+          <td><span class="td-tag" style="background:#f5e8e4;color:#6b1a08">Q2</span></td>
+        </tr>
+        <tr>
+          <td><div class="priority-num prio-q2">10</div></td>
+          <td><strong>SEO + LLM content investment</strong></td>
+          <td>SEO Non-Brand already delivers 26.4% CR and $306K avg Coinhold balance with zero paid support — permanently underallocated. Invest in structured articles, FAQ formats, and entity pages optimized for ChatGPT, Perplexity, Google SGE, Gemini, and Claude. YouTube + Reddit + LinkedIn feed LLM training data. Every well-written piece is a permanent acquisition asset.</td>
+          <td><span class="td-tag" style="background:#f5e8e4;color:#6b1a08">Q2</span></td>
+        </tr>
+        
+        
+        
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ BENCHMARKS ══ -->
+<div id="benchmarks" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 8</div>
+    <h2 class="page-title">The benchmark universe</h2>
+    <p class="page-desc">21 companies. Each one is here for one specific lesson mapped to one specific EMCD challenge. Operational references, not aspirational ones.</p>
+  </div>
+
+  <div class="bench-section">
+    <div class="bench-label" style="background:var(--navy)">Fintech master references — growth system thinking</div>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-name">Revolut</div><div class="bench-scale">50M+ users · $45B valuation</div><div class="bench-lesson">Metal card as status. Every spend = marketing moment. 200+ behavioral triggers. Refer to unlock features, not cash. Grew through product virality, not ads.</div></div>
+      <div class="bench-card"><div class="bench-name">Nubank</div><div class="bench-scale">100M+ users · $14B market cap</div><div class="bench-lesson">WOM as primary channel — 80%+ early growth. Purple card = identity. NPS after every touchpoint. Community as product feedback loop.</div></div>
+      <div class="bench-card"><div class="bench-name">DolarApp (ARQ)</div><div class="bench-scale">LATAM · segment obsession</div><div class="bench-lesson">Pain so visible the solution sold itself. 4 ICPs under one umbrella. 2-minute transfer = the campaign. Speed and delight are the marketing.</div></div>
+    </div>
+  </div>
+
+  <div class="bench-section">
+    <div class="bench-label" style="background:#1a56a8">Coinhold benchmarks</div>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-name">Lemon</div><div class="bench-scale">5.5M users · $9.3B volume · $66M raised</div><div class="bench-lesson">Engine 2 proof: yield + card grows to millions without miners. Card as viral mechanic. 0 to 5M in Argentina — the playbook for Coinhold direct acquisition.</div></div>
+      <div class="bench-card"><div class="bench-name">Bitso retail</div><div class="bench-scale">9M users · 3x growth in 3 years</div><div class="bench-lesson">Yield + card + ramps at scale. Market-by-market sequencing. Argentina 3.3x revenue YoY — dominate one market before moving to the next.</div></div>
+      <div class="bench-card"><div class="bench-name">Bitpanda</div><div class="bench-scale">7.4M users · €371M revenue · 2026 IPO</div><div class="bench-lesson">Multi-asset is the direction: stocks, ETFs, indexes alongside crypto. Exactly where Coinhold is heading with Xstocks + PreIPO + RWA. MiCA as competitive moat.</div></div>
+      <div class="bench-card"><div class="bench-name">Phantom</div><div class="bench-scale">20M MAUs · $3B valuation</div><div class="bench-lesson">Super-app UX benchmark. Make crypto invisible: biometric auth, one-tap swaps, no friction. CEO's goal: first to bring crypto into everyday payments wins.</div></div>
+      <div class="bench-card"><div class="bench-name">WhiteBIT</div><div class="bench-scale">8M users · top-15 mining pool</div><div class="bench-lesson">Mining pool + yield + card ecosystem. Nova card: $50M vol in year 1. Closest structural peer to EMCD — study their mining → retail bridge.</div></div>
+      <div class="bench-card"><div class="bench-name">Ondo Finance</div><div class="bench-scale">$500M+ TVL · leading RWA protocol</div><div class="bench-lesson">Forward benchmark for RWA products. When Coinhold adds RWA: this is how to communicate tokenized yield and build institutional trust.</div></div>
+    </div>
+  </div>
+
+  <div class="bench-section">
+    <div class="bench-label" style="background:#0e5c3a">Mining app benchmarks</div>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-name">WhiteBIT / WhitePool</div><div class="bench-scale">Top-15 global mining pool</div><div class="bench-lesson">Mining pool + retail bridge model. The closest structural mirror — study how they move miners into yield products and card.</div></div>
+      <div class="bench-card"><div class="bench-name">Luxor</div><div class="bench-scale">Miner-first product philosophy</div><div class="bench-lesson">Hashprice analytics, ASIC management, transparent payouts. Sets the UX bar for what professional miners expect from an app.</div></div>
+      <div class="bench-card"><div class="bench-name">Foundry</div><div class="bench-scale">#1 North America mining pool</div><div class="bench-lesson">Institutional-grade mining dashboard. The benchmark for dashboard design and professional miner product experience.</div></div>
+    </div>
+  </div>
+
+  <div class="bench-section">
+    <div class="bench-label" style="background:#8b2810">INDESQ benchmarks</div>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-name">Bitvavo</div><div class="bench-scale">2M users · 50% EUR liquidity</div><div class="bench-lesson">Regional dominance through low fees + MiCA compliance + clean UX. Win by being the most trustworthy, not the most feature-rich.</div></div>
+      <div class="bench-card"><div class="bench-name">Bitso Alpha</div><div class="bench-scale">Built on 9M Bitso retail base</div><div class="bench-lesson">Proof that retail → pro graduation works at scale. Do not acquire pro traders from scratch — graduate them from Coinhold.</div></div>
+      <div class="bench-card"><div class="bench-name">Hyperliquid</div><div class="bench-scale">$844M revenue · 0 external funding</div><div class="bench-lesson">Community ownership model: 97% of fees back to users. Built a fanbase, not a user base. The philosophy applies to how INDESQ treats power users.</div></div>
+      <div class="bench-card"><div class="bench-name">Bitpanda Pro</div><div class="bench-scale">16 institutional partners · €371M rev</div><div class="bench-lesson">Multi-asset pro trading is the destination: crypto + stocks + tokenized assets in one order book. INDESQ's long-term direction.</div></div>
+    </div>
+  </div>
+
+  <div class="bench-section">
+    <div class="bench-label" style="background:#5a4008">Performa benchmarks — standalone brand, own document</div>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-name">Bitso Business</div><div class="bench-scale">$82B annualized TPV</div><div class="bench-lesson">Direct mirror: stablecoin cross-border rails, 1,700+ institutional clients. The 1:1 competitor and benchmark for Performa's B2B payments scope.</div></div>
+      <div class="bench-card"><div class="bench-name">Bridge (Stripe)</div><div class="bench-scale">Acquired by Stripe 2024</div><div class="bench-lesson">API-first stablecoin infrastructure. Developer experience benchmark — B2B buyers want APIs and webhooks, not just a dashboard.</div></div>
+      <div class="bench-card"><div class="bench-name">Deel</div><div class="bench-scale">$500M+ ARR · 150+ countries</div><div class="bench-lesson">Global payroll in minutes. The payroll outsourcing UX and compliance automation benchmark. Buyer persona and sales motion are directly applicable.</div></div>
+      <div class="bench-card"><div class="bench-name">Airwallex</div><div class="bench-scale">$100B+ annualized payments</div><div class="bench-lesson">Cross-border business payments + corporate cards. FX efficiency benchmark — faster and cheaper than banks for international transfers.</div></div>
+      <div class="bench-card"><div class="bench-name">Zero Hash</div><div class="bench-scale">50 US states + international</div><div class="bench-lesson">White-label crypto infrastructure for fintechs. B2B crypto-as-a-service — proves there's a large enterprise market for this positioning.</div></div>
+      <div class="bench-card"><div class="bench-name">Mercuryo</div><div class="bench-scale">Partners: Binance, Trust Wallet</div><div class="bench-lesson">OTC desk operations and B2B liquidity management. How to structure high-volume OTC workflow and enterprise partnerships.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ OKRs ══ -->
+<div id="okrs" class="section">
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Section 9</div>
+    <h2 class="page-title">How we measure success</h2>
+    <p class="page-desc">Measurable targets against Q1 2026 baselines. Progress bars show current state vs. target.</p>
+  </div>
+
+  <div class="okr-grid" id="okr-grid"></div>
+
+  <div class="callout blue">
+    <div class="callout-icon">i</div>
+    <div>OKRs confirmed once: (1) MAU agreed as north star by leadership — revenue-generating criteria defined per BU, (2) Analytics shares geographic breakdown and retention data, (3) Mining → Coinhold SSO decision made. All three conversations before end of April.</div>
+  </div>
+
+  <div class="sh">The north star — Revenue = MAU × ARPU</div>
+  <div class="callout navy">
+    <div class="callout-icon">★</div>
+    <div><strong>Revenue = MAU × ARPU.</strong> Revenue is the north star. MAU and ARPU are how it is decomposed and managed. MAU = users who completed at least one revenue-generating action in the last 30 days. WAU is used tactically by the growth team for campaign and A/B test evaluation only. Revenue-generating actions: <strong>Coinhold</strong> — deposit, yield accrual, card transaction, loan drawn, staking, investment. <strong>Mining</strong> — payout received. <strong>INDESQ</strong> — trade executed. ARPU tracked globally. ARPPU tracked per BU — the growth team metric that reveals where value is concentrated and where cross-sell is working.</div>
+  </div>
+</div>
+</div>
+
+<div class="doc-footer">
+  EMCD Growth Strategy v3.1 &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Confidential
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleCF(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// OKR data
+const okrs = [
+  { obj:"Fix data foundation", kr:"Untracked regs: 16% → < 3%. MAU dashboard live.", baseline:"16.3%", current:16, target:3, inverted:true },
+  { obj:"Improve acquisition quality", kr:"Activation CR: 22.3% → 35% (30-day window)", baseline:"22.3%", current:22.3, target:35 },
+  { obj:"Fix paid efficiency", kr:"Performance CAC: $15.8 → < $8. CR: 10.7% → 18%+", baseline:"$15.8 CAC", current:15.8, target:8, inverted:true },
+  { obj:"Scale the best channel", kr:"Referral: 2,113 → 4,000+ regs. K-factor > 0.3", baseline:"2,113 regs", current:2113, target:4000 },
+  { obj:"Mining launch success", kr:"TBD — to be defined", baseline:"Not measured", current:0, target:100 },
+  { obj:"Coinhold direct acquisition", kr:"TBD — # non-miner active users to be defined", baseline:"No engine", current:0, target:100 },
+  { obj:"Lifecycle system live", kr:"TBD — # of behavioral triggers running. +30% activation lift vs static", baseline:"Static only", current:0, target:100 },
+  { obj:"Grow organic", kr:"SEO Non-Brand regs +50%. Organic/paid > 60/40", baseline:"1,675 regs", current:1675, target:2513 },
+  { obj:"Retention baseline", kr:"MAU defined and tracked. MoM growth rate established.", baseline:"Not tracked", current:0, target:100 },
+  { obj:"Monetization", kr:"ARPU defined globally. ARPPU defined per BU.", baseline:"Not defined", current:0, target:100 },
+];
+
+const grid = document.getElementById('okr-grid');
+okrs.forEach(o => {
+  let pct;
+  if (o.baseline === 'Not tracked' || o.baseline === 'No campaign' || o.baseline === 'No engine' || o.baseline === 'Static only' || o.baseline === 'Not measured' || o.baseline === 'Not defined') {
+    pct = 0;
+  } else if (o.inverted) {
+    const range = o.current - o.target;
+    pct = Math.max(0, Math.min(100, Math.round((1 - range / o.current) * 100)));
+  } else {
+    pct = Math.max(0, Math.min(100, Math.round((o.current / o.target) * 100)));
+  }
+  const color = pct >= 60 ? '#1a6b42' : pct >= 30 ? '#c9963a' : '#c00000';
+  grid.innerHTML += `
+    <div class="okr-card">
+      <div class="okr-obj">${o.obj}</div>
+      <div class="okr-kr">${o.kr}</div>
+      <div class="okr-bar-wrap"><div class="okr-bar" style="width:${pct}%;background:${color}"></div></div>
+      <div class="okr-vals"><span>Now: ${o.baseline}</span><span>Target set</span></div>
+    </div>`;
+});
+</script>
+</body>
+</html>
